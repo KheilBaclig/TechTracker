@@ -97,7 +97,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" crossorigin="anonymous"></script>
 <script>
 new ApexCharts(document.querySelector('#revenue-chart'), {
-    theme: { mode: 'light' },
+    theme: { mode: 'dark' },
     series: [
         { name: 'Logins',        data: [850, 920, 1100, 1050, 1250, 1320] },
         { name: 'Registrations', data: [120, 150, 110, 130, 180, 156] }
@@ -111,11 +111,11 @@ new ApexCharts(document.querySelector('#revenue-chart'), {
     xaxis: {
         categories: ['Jan','Feb','Mar','Apr','May','Jun'],
         axisBorder: { show: false }, axisTicks: { show: false },
-        labels: { style: { colors: '#64748b', fontSize: '0.72rem' } }
+        labels: { style: { colors: '#4a4540', fontSize: '0.72rem' } }
     },
-    yaxis: { labels: { style: { colors: '#64748b', fontSize: '0.72rem' } } },
-    grid: { borderColor: 'rgba(0,0,0,0.05)', strokeDashArray: 4 },
-    tooltip: { theme: 'light' }
+    yaxis: { labels: { style: { colors: '#4a4540', fontSize: '0.72rem' } } },
+    grid: { borderColor: 'rgba(255,255,255,0.04)', strokeDashArray: 4 },
+    tooltip: { theme: 'dark' }
 }).render();
 
 new jsVectorMap({

@@ -137,7 +137,7 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js" crossorigin="anonymous"></script>
 <script>
 new ApexCharts(document.querySelector('#engagement-chart'), {
-    theme: { mode: 'light' },
+    theme: { mode: 'dark' },
     series: [
         { name: 'Submission Volume', data: [44, 55, 41, 67, 22, 43, 21] },
         { name: 'Quiz Participation', data: [13, 23, 20, 8, 13, 27, 33] }
@@ -151,11 +151,11 @@ new ApexCharts(document.querySelector('#engagement-chart'), {
     xaxis: {
         categories: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
         axisBorder: { show: false }, axisTicks: { show: false },
-        labels: { style: { colors: '#64748b', fontSize: '0.72rem' } }
+        labels: { style: { colors: '#7a7368', fontSize: '0.72rem' } }
     },
-    yaxis: { labels: { style: { colors: '#64748b', fontSize: '0.72rem' } } },
-    grid: { borderColor: 'rgba(0,0,0,0.05)', strokeDashArray: 4 },
-    tooltip: { theme: 'light' }
+    yaxis: { labels: { style: { colors: '#7a7368', fontSize: '0.72rem' } } },
+    grid: { borderColor: 'rgba(255,255,255,0.03)', strokeDashArray: 4 },
+    tooltip: { theme: 'dark' }
 }).render();
 </script>
 <?= $this->endSection() ?>
