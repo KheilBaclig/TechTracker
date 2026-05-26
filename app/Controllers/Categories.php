@@ -80,3 +80,4 @@ class Categories extends BaseController
         return redirect()->to('/categories')->with('success', 'Category deleted.');
     }
 }
+
