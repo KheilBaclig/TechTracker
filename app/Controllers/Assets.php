@@ -169,3 +169,4 @@ class Assets extends BaseController
         return redirect()->to('/assets')->with('success', 'Asset deleted.');
     }
 }
+
