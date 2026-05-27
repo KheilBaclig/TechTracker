@@ -189,3 +189,5 @@ $statuses  = [
         </div>
     <?php endif; ?>
 </div>
+
+// End of file: app/Views/assets/index.php
