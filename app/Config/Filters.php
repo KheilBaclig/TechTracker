@@ -2,22 +2,18 @@
 
 namespace Config;
 
+use App\Filters\ApiAuthFilter;
+use App\Filters\AuthFilter;
+use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
-use App\Filters\AuthFilter;
-use App\Filters\StudentFilter;
-use App\Filters\TeacherFilter;
-use App\Filters\AdminFilter;
-use App\Filters\Authorization;
-use App\Filters\Authentication;
-use CodeIgniter\Filters\Honeypot;
-use CodeIgniter\Filters\PageCache;
-use CodeIgniter\Filters\ForceHTTPS;
 use CodeIgniter\Filters\DebugToolbar;
+use CodeIgniter\Filters\ForceHTTPS;
+use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
-use CodeIgniter\Filters\SecureHeaders;
+use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
-use CodeIgniter\Config\Filters as BaseFilters;
+use CodeIgniter\Filters\SecureHeaders;
 
 class Filters extends BaseFilters
 {
@@ -40,12 +36,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'isLoggedIn'    => Authentication::class,
-        'isGranted'     => Authorization::class,
         'auth'          => AuthFilter::class,
-        'student'       => StudentFilter::class,
-        'teacher'       => TeacherFilter::class,
-        'admin'         => AdminFilter::class,
+        'apiauth'       => ApiAuthFilter::class,
     ];
 
     /**
@@ -63,7 +55,7 @@ class Filters extends BaseFilters
      */
     public array $required = [
         'before' => [
-            'forcehttps', // Force Global Secure Requests
+            // 'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
         ],
         'after' => [
@@ -77,15 +69,15 @@ class Filters extends BaseFilters
      * List of filter aliases that are always
      * applied before and after every request.
      *
-     * @var array<string, array<string, array<string, string>>>|array<string, list<string>>
+     * @var array{
+     *     before: array<string, array{except: list<string>|string}>|list<string>,
+     *     after: array<string, array{except: list<string>|string}>|list<string>
+     * }
      */
     public array $globals = [
         'before' => [
-            // Legacy filters kept for menu-management system compatibility
-            'isLoggedIn' => ['except' => ['/', 'register', 'login', 'unauthorized']],
-            'isGranted'  => ['except' => ['/', 'register', 'login', 'logout', 'blocked', 'unauthorized', 'dashboard', 'dashboard-v2', 'dashboard-v3', 'student/*', 'students', 'student', 'profile', 'profile/*', 'admin/*']],
             // 'honeypot',
-            // 'csrf',
+            'csrf',
             // 'invalidchars',
         ],
         'after' => [
